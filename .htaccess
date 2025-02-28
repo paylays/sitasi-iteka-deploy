@@ -1,0 +1,18 @@
+# Menambahkan konfigurasi MIME types
+AddType application/javascript .js
+AddType text/css .css
+AddType application/json .json
+AddType image/png .png
+AddType image/jpeg .jpg .jpeg
+AddType image/gif .gif
+
+# Memastikan file HTML di-render dengan benar
+AddType text/html .html
+
+# Menghindari file yang diunduh karena kesalahan MIME type
+Header set Content-Type "text/html; charset=UTF-8"
+
+# Mengatur cache agar file tidak diunduh kembali secara tidak perlu
+<FilesMatch "\.(html|htm|js|css|jpg|jpeg|png|gif|svg|json)$">
+  Header set Cache-Control "max-age=31536000, public"
+</FilesMatch>
